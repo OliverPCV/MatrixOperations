@@ -27,22 +27,49 @@ public class Matrix implements IMatrix {
 
     @Override
     public IMatrix times(IMatrix matrix) {
-        throw new NotImplementedError(); // TODO:
+        double[][] resultMat = new double[this.getRows()][matrix.getColumns()];
+
+        for(int i=0; i < this.getRows();i++){
+            for(int j=0; j < matrix.getColumns();j++){
+                for(int k=0;k< matrix.getRows() ;k++)
+                {
+                    resultMat[i][j] += this.rawArray[i][k] * matrix.get(k, j);;
+                }
+            }
+        }
+
+        return  MatrixFactory.create(resultMat);
     }
+
 
     @Override
     public IMatrix times(Number scalar) {
-        throw new NotImplementedError(); // TODO:
+        double[][] matrix = new double[rawArray.length][rawArray[0].length];
+        double doubleScalar = (double) scalar;
+
+        for(int i = 0; i < matrix.length; i++){
+            for (int j = 0; j < matrix[i].length; j++){
+                matrix[i][j] += rawArray[i][j] * doubleScalar;
+            }
+        }
+        return MatrixFactory.create(matrix); // TODO:
     }
 
     @Override
     public IMatrix add(IMatrix matrix) {
-        throw new NotImplementedError(); // TODO:
+        double[][] matrixJakParek = new double [this.getRows()][this.getColumns()];
+        for (int i = 0; i < this.getRows(); i++) {
+            for (int j = 0; j < this.getColumns(); j++) {
+                matrixJakParek[i][j] = matrix.get(i,j) + this.get(i,j) ;
+            }
+        }
+        return MatrixFactory.create(matrixJakParek); // TODO:
     }
 
     @Override
     public double get(int n, int m) {
-        throw new NotImplementedError(); // TODO:
+        return this.rawArray[n][m];
+        // TODO:
     }
 
     //region Optional

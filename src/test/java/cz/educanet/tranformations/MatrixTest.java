@@ -63,14 +63,29 @@ public class MatrixTest {
 
     @Test
     public void times() {
+
+        double[][] testTimes = {
+                {22.0, 28.0},
+                {49.0, 64.0},
+        };
+
     }
 
     @Test
     public void timesScalar() {
+        double[][] testTimesScalar = {
+                {5.0, 5.0, 5.0},
+                {5.0, 5.0, 5.0},
+        };
     }
 
     @Test
     public void add() {
+        double[][] testAdd = {
+                {2, 1, 1},
+                {1, 1, 1},
+                {0, 0, 1},
+        };
     }
 
     @Test
